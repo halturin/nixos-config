@@ -20,8 +20,8 @@
     mc
     htop
     neofetch
-    spotify
-    dropbox
+    #spotify
+    slack
     kubernetes
     minikube
     tmux
@@ -35,9 +35,12 @@
     ripgrep
 
     iosevka
+    skype
+    gnome3.gnome-tweak-tool
+    gnome3.gnome-boxes
 
-   # gnome3.gnome-tweak-tool
-
+    transmission-gtk
+    rxvt-unicode
   ];
 
   programs.fzf.enable = true;
@@ -87,6 +90,8 @@
       EDITOR = "vim";
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
+
+      NIX_PATH = "$HOME/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels";
 
       # Golang
       GOPATH = "$HOME/devel/goenv";
@@ -329,6 +334,39 @@
     ];
   };
 
+  programs.gnome-terminal = {
+    enable = true;
+    showMenubar = false;
+    themeVariant = "dark";
+    profile = {
+      "b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
+        visibleName = "Grovbox";
+        default = true;
+        showScrollbar = false;
+        font = "Iosevka 10";
+        colors = {
+          backgroundColor = "rgb(40,40,40)";
+          foregroundColor = "rgb(235,219,178)";
+          cursor = {
+            background = "rgb(222,128,67)";
+            foreground = "rgb(235,219,178)";
+          };
+
+          palette = [
+            "rgb(40,40,40)" "rgb(204,36,29)" 
+            "rgb(152,151,26)" "rgb(215,153,33)"
+            "rgb(69,133,136)" "rgb(177,98,134)"
+            "rgb(104,157,106)" "rgb(168,153,132)"
+            "rgb(146,131,116)" "rgb(251,73,52)"
+            "rgb(184,187,38)" "rgb(250,189,47)"
+            "rgb(131,165,152)" "rgb(211,134,155)"
+            "rgb(142,192,124)" "rgb(235,219,178)"
+          ];
+        };
+      };
+    };
+
+  };
 
 
   xresources.extraConfig = ''
