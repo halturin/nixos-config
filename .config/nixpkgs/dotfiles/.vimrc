@@ -17,6 +17,7 @@ nnoremap <silent> <leader>o :Files<CR>
 nnoremap <silent> <leader>O :Files!<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <C-p> :History<CR>
+nnoremap <silent> <C-h> :History:<CR>
 
 nnoremap <leader>f :NERDTreeToggle<Enter>
 imap jj <Esc>
@@ -65,7 +66,7 @@ set undodir=/tmp//
 set cursorline
 set nohlsearch
 
-" Next two commands make vim use X11 clipboard
+" Next commands make vim use X11 clipboard
 set clipboard=unnamed
 " x clipboard
 vnoremap y "*y
@@ -73,5 +74,5 @@ noremap p "*p
 " system clipboard
 vnoremap Y "+y
 noremap P "+p
-" nnoremap <expr> p (v:register == '"' && &clipboard =~ 'unnamed' ? '"*p' : '"' . v:register . 'p')
+
 

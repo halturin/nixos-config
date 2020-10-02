@@ -24,12 +24,14 @@
 
     kubernetes minikube
 
-    tmux ctags cmake gnumake gcc git tig binutils
+    tmux ctags cmake gnumake gcc git tig binutils xclip
 
     go erlang python3
 
     exa
     ripgrep
+
+    inetutils
 
     vscode
 
