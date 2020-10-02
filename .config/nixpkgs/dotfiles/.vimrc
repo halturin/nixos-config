@@ -64,3 +64,14 @@ set undodir=/tmp//
 
 set cursorline
 set nohlsearch
+
+" Next two commands make vim use X11 clipboard
+set clipboard=unnamed
+" x clipboard
+vnoremap y "*y
+noremap p "*p
+" system clipboard
+vnoremap Y "+y
+noremap P "+p
+" nnoremap <expr> p (v:register == '"' && &clipboard =~ 'unnamed' ? '"*p' : '"' . v:register . 'p')
+
