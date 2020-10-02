@@ -17,30 +17,31 @@
   home.stateVersion = "20.03";
 
   home.packages = with pkgs; [
-    mc
-    htop
-    neofetch
-    #spotify
+    mc htop neofetch
+    spotify
+    discord
     slack
-    kubernetes
-    minikube
-    tmux
-    ctags
-    git
-    tig
-    go
-    erlang
-    python3
+
+    kubernetes minikube
+
+    tmux ctags cmake gnumake gcc git tig binutils
+
+    go erlang python3
+
     exa
     ripgrep
 
+    vscode
+
     iosevka
     skype
-    gnome3.gnome-tweak-tool
-    gnome3.gnome-boxes
 
+    gnome3.gnome-tweak-tool gnome3.gnome-boxes
     transmission-gtk
     rxvt-unicode
+    tdesktop
+
+    iotop powertop
   ];
 
   programs.fzf.enable = true;
@@ -49,6 +50,8 @@
     enable = true;
     userEmail = "halturin@gmail.com";
     userName = "Taras Halturin";
+    signing.key = "4949A906AB2FE101";
+    signing.signByDefault = true;
 
     aliases = {
       s = "status";
@@ -113,12 +116,20 @@
       ergo() { cd $GOPATH/src/github.com/halturin/ergo/$1 }
       compctl -/ -W $GOPATH/src/github.com/halturin/ergo/ ergo
 
+      arweave() { cd $HOME/devel/erlang/arweave/$1 }
+      compctl -/ -W $HOME/devel/erlang/arweave/ arweave
+
     '';
 
+    # limits can be defined via security.pam.loginLimits in the system configuration
+    # details are here https://search.nixos.org/options?channel=unstable&query=security.pam.
     initExtra = ''
       bindkey 'jj' vi-cmd-mode
 
       neofetch
+
+      ulimit -n 500000
+
     '';
 
    plugins = [
@@ -244,16 +255,54 @@
         ultisnips
 
         (pkgs.vimUtils.buildVimPlugin {
-        pname = "vim-numbertoggle";
-        version = "1.1.1";
-        src = pkgs.fetchFromGitHub {
-          owner = "jeffkreeftmeijer";
-          repo = "vim-numbertoggle";
-          rev = "cfaecb9e22b45373bb4940010ce63a89073f6d8b";
-          sha256 = "1rrmvv7ali50rpbih1s0fj00a3hjspwinx2y6nhwac7bjsnqqdwi";
-        };
-          
-
+          pname = "vim-numbertoggle";
+          version = "1.1.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "jeffkreeftmeijer";
+            repo = "vim-numbertoggle";
+            rev = "cfaecb9e22b45373bb4940010ce63a89073f6d8b";
+            sha256 = "1rrmvv7ali50rpbih1s0fj00a3hjspwinx2y6nhwac7bjsnqqdwi";
+          };
+        })
+        (pkgs.vimUtils.buildVimPlugin {
+          pname = "erlang-compiler";
+          version = "1.1.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "vim-erlang";
+            repo = "vim-erlang-compiler";
+            rev = "dec059a4f391b56ee13b977deecb0d646c10b631";
+            sha256 = "0gb6wkq8skwhgcrc5dk3jinyh71x4db1j44bgw50slsilmg99d09";
+          };
+        })
+        (pkgs.vimUtils.buildVimPlugin {
+          pname = "erlang-omnicomplete";
+          version = "1.1.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "vim-erlang";
+            repo = "vim-erlang-omnicomplete";
+            rev = "2f980dd8f1861e00ea14dcd5ecc370e71af695fb";
+            sha256 = "1i3c7ybahmb4az2njzvfnvx39bqiyqhf43n32rhpc3xg05y3bk7d";
+          };
+        })
+        (pkgs.vimUtils.buildVimPlugin {
+          pname = "erlang-runtime";
+          version = "1.1.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "vim-erlang";
+            repo = "vim-erlang-runtime";
+            rev = "b8e4ea6381d3cfab8af6c8e9373699ffc42921b1";
+            sha256 = "1zmkv85k1h0ax1m878ylcsvbw4kl27lg02sjgy8913mp0hvzyh2q";
+          };
+        })
+        (pkgs.vimUtils.buildVimPlugin {
+          pname = "erlang-tags";
+          version = "1.1.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "vim-erlang";
+            repo = "vim-erlang-tags";
+            rev = "e4bfe17793956f28846b7969f4620dbb168bd044";
+            sha256 = "0r0dk8dblw3r7c30p6pbcyavs688m0776npqgpxa9gafg7ihjczb";
+          };
         })
 	];
   };
@@ -268,6 +317,7 @@
 
     extraConfig = ''
       set -g focus-events on
+      set -g mouse on
 
       # set terminal window title to be a name of tmux window
       set-option -g set-titles on

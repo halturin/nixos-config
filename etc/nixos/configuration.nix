@@ -10,56 +10,42 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.cleanTmpDir = true;
 
-  networking.hostName = "vmnix"; # Define your hostname.
+  networking.hostName = "sevelen"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.ens33.useDHCP = true;
+  networking.interfaces.eno1.useDHCP = true;
+  networking.interfaces.enp71s0.useDHCP = true;
+  networking.interfaces.wlo2.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
+  # i18n.defaultLocale = "en_US.UTF-8";
+   console = {
+     font = "Lat2-Terminus16";
+     keyMap = "us";
+   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Zurich";
+   time.timeZone = "Europe/Zurich";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    home-manager
-
-    wget neovim
-
-    rxvt-unicode
-
-    firefox
-
-    docker
-
-  ];
-
-  #environment.shells = [ pkgs.zsh ];
+   environment.systemPackages = with pkgs; [
+     wget neovim home-manager firefox git 
+   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -68,17 +54,12 @@
      enable = true;
      enableSSHSupport = true;
      pinentryFlavor = "gnome3";
-  };
-
-   programs.dconf.enable = true;
+   };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.picom.enable = true;
-
-  virtualisation.docker.enable = true;
+   services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -90,32 +71,29 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+   sound.enable = true;
+   hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver = {
-	enable = true;
-	layout = "us";
-
-	desktopManager.gnome3.enable = true;
-
-  };    # services.xserver.xkbOptions = "eurosign:e";
+   services.xserver.enable = true;
+   services.xserver.layout = "us";
+   services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
   # Enable the KDE Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+   services.xserver.displayManager.gdm.enable = true;
+   services.xserver.desktopManager.gnome3.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.bsp = {
+   users.users.taras = {
      isNormalUser = true;
      extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
 
      shell = pkgs.zsh;
-  };
+   };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -127,15 +105,9 @@
 
   fonts = {
     enableDefaultFonts = true;
-    fonts = [
-       pkgs.iosevka
-    ];
-
-    fontconfig = {
-      
-
-    };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
 	(self: super: {
@@ -146,5 +118,15 @@
 	})
   ];
 
+  virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
+
+  boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+
+  hardware.cpu.amd.updateMicrocode = true;
+  nix.gc.automatic = true;
+
+  # due to bug https://github.com/NixOS/nixpkgs/issues/32580 encountering on NVIDIA cards
+  environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
 }
 

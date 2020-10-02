@@ -7,7 +7,7 @@ map <C-m> :cp<CR>
 nnoremap <leader>a :cclose<CR>
 
 " Enter automatically into the files directory
-"autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
@@ -63,3 +63,4 @@ set directory=/tmp//
 set undodir=/tmp//
 
 set cursorline
+set nohlsearch
