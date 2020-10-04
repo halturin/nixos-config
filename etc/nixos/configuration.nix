@@ -19,6 +19,12 @@
   networking.hostName = "sevelen"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  #networking.extraHosts = {
+  #  ''
+  #    127.0.0.1 alterhost
+  #  ''
+  #};
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
@@ -58,6 +64,15 @@
 
   # List services that you want to enable:
 
+    services = {
+        syncthing = {
+            enable = true;
+            user = "taras";
+            dataDir = "/archive/data";
+            configDir = "/home/taras/.config/syncthing";
+        };
+    };
+
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
 
@@ -90,7 +105,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.taras = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
 
      shell = pkgs.zsh;
    };

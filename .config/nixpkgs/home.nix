@@ -22,20 +22,22 @@
     discord
     slack
 
-    kubernetes minikube
+    kubernetes minikube docker-machine-kvm2
 
-    tmux ctags cmake gnumake gcc git tig binutils xclip
+    tmux ctags cmake gnumake gcc git tig binutils xclip file
 
-    go erlang python3
+    go erlang python3 
 
     exa
     ripgrep
+
+    syncthing-gtk
 
     inetutils
 
     vscode
 
-    iosevka
+    iosevka dejavu_fonts ttf_bitstream_vera
     skype
 
     gnome3.gnome-tweak-tool gnome3.gnome-boxes
