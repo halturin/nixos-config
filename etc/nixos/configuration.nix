@@ -122,15 +122,21 @@
     enableDefaultFonts = true;
   };
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override {
+      fonts = [ "Iosevka" "FiraCode" "DroidSansMono" ];
+    })
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-	(self: super: {
-		neovim = super.neovim.override {
-			viAlias = true;
-			vimAlias = true;
-		};
-	})
+    (self: super: {
+    	neovim = super.neovim.override {
+    		viAlias = true;
+    		vimAlias = true;
+    	};
+    })
   ];
 
   virtualisation.libvirtd.enable = true;

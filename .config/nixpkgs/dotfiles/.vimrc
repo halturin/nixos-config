@@ -16,10 +16,11 @@ nnoremap <silent> <leader>q :q!<CR>
 nnoremap <silent> <leader>o :Files<CR>
 nnoremap <silent> <leader>O :Files!<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>m :Marks<CR>
 nnoremap <silent> <C-p> :History<CR>
 nnoremap <silent> <C-h> :History:<CR>
 
-nnoremap <leader>f :NERDTreeToggle<Enter>
+nnoremap <leader>f :NERDTreeToggle %<Enter>
 imap jj <Esc>
 
 nnoremap <leader>F :Files<Enter>

@@ -17,14 +17,16 @@
   home.stateVersion = "20.03";
 
   home.packages = with pkgs; [
-    mc htop neofetch
+    mc htop neofetch vifm-full
     spotify
     discord
     slack
 
     kubernetes minikube docker-machine-kvm2
 
-    tmux ctags cmake gnumake gcc git tig binutils xclip file
+    tmux ctags cmake gnumake gcc git tig binutils xclip file killall
+    dhex jq
+    
 
     go erlang python3 
 
@@ -32,6 +34,7 @@
     ripgrep
 
     syncthing-gtk
+    chromium
 
     inetutils
 
@@ -244,19 +247,19 @@
 
   programs.neovim = {
 	enable = true;
-	vimAlias = true;
-        extraConfig = builtins.readFile ./dotfiles/.vimrc;
+    vimAlias = true;
+    extraConfig = builtins.readFile ./dotfiles/.vimrc;
 	plugins = with pkgs.vimPlugins; [
 		vim-nix
 		vim-go
 		gruvbox
+        nord-vim
         rust-vim
         vim-airline
         nerdtree
         fzf-vim
         vim-fugitive
         tagbar
-        ultisnips
 
         (pkgs.vimUtils.buildVimPlugin {
           pname = "vim-numbertoggle";
@@ -317,7 +320,7 @@
     clock24 = true;
     keyMode = "vi";
     shortcut = "a";
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
 
     extraConfig = ''
       set -g focus-events on
@@ -385,6 +388,7 @@
     plugins = with pkgs.tmuxPlugins; [
       gruvbox
       sensible
+      #nord
     ];
   };
 
