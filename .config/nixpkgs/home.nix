@@ -16,6 +16,11 @@
   # changes in each release.
   home.stateVersion = "20.03";
 
+
+  home.file.".config/vifm/colors".source = ./vifm/colors;
+  home.file.".config/vifm/vifm.icons".source = ./vifm/vifm.icons;
+  home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
+
   home.packages = with pkgs; [
     mc htop neofetch vifm-full
     spotify
@@ -47,6 +52,8 @@
     transmission-gtk
     rxvt-unicode
     tdesktop
+
+    dumptorrent
 
     iotop powertop
   ];
