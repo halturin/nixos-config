@@ -16,7 +16,18 @@
 
   boot.cleanTmpDir = true;
 
-  networking.hostName = "sevelen"; # Define your hostname.
+  networking = {
+    hostName = "sevelen"; # Define your hostname.
+    nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    firewall = {
+      enable = true;
+      allowPing = true;
+      allowedTCPPorts = [ 22 80 443 ];
+    };
+  };
+
+  security.sudo.wheelNeedsPassword = false;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   #networking.extraHosts = {
