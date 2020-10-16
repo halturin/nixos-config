@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+let
+  mkTuple = lib.hm.gvariant.mkTuple;
+in 
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -16,10 +18,12 @@
   # changes in each release.
   home.stateVersion = "20.03";
 
-
   home.file.".config/vifm/colors".source = ./vifm/colors;
   home.file.".config/vifm/vifm.icons".source = ./vifm/vifm.icons;
   home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
+  home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
+
+  xdg.enable = true;
 
   home.packages = with pkgs; [
     mc htop neofetch vifm-full
@@ -31,6 +35,8 @@
 
     tmux ctags cmake gnumake gcc git tig binutils xclip file killall
     dhex jq
+
+    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio
     
 
     go erlang python3 
@@ -56,6 +62,10 @@
     dumptorrent
 
     iotop powertop
+
+    lm_sensors
+
+    materia-theme
   ];
 
   programs.fzf.enable = true;
@@ -397,6 +407,59 @@
       sensible
       #nord
     ];
+  };
+
+  dconf.settings = {
+     "org/gnome/shell/extensions/user-theme" = {
+        name = "Materia-light-compact";
+     };
+     "org/gnome/mutter/keybindings" = {
+         toggle-tiled-left = ["<Super>h"];
+         toggle-tiled-right = ["<Super>l"];
+     };
+     "org/gnome/mutter" = {
+       edge-tiling = true;
+       attach-modal-dialogs = true;
+     };
+     "org/gnome/settings-daemon/plugins/media-keys" = {
+         screensaver = ["<Super>Return"];
+     };
+     "org/gnome/desktop/background" = {
+         picture-uri = "file:///home/taras/.local/share/backgrounds/wp.jpg";
+    };
+
+    "org/gnome/desktop/interface" = {
+         clock-format = "24h";
+         clock-show-weekday = true;
+         cursor-size = 32;
+
+         document-font-name = "Iosevka 9";
+         font-name = "Iosevka Term 10";
+         gtk-theme = "Materia-light-compact";
+         monospace-font-name = "Iosevka Term 10";
+    };
+    "org/gnome/desktop/input-sources" = {
+         per-window = true;
+         sources = [ 
+           (mkTuple ["xkb" "us"])
+           (mkTuple ["xkb" "ru"])
+         ]; 
+         xkb-options = "['terminate:ctrl_alt_bksp', 'lv3:ralt_switch', 'grp:shifts_toggle']";
+     };
+    "org/gnome/desktop/wm/preferences" = {
+        action-middle-click-titlebar = "lower";
+        titlebar-font = "Iosevka Term 10";
+        titlebar-uses-system-font = true;
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+           maximize = ["<Super>k"];
+           unmaximize = ["<Super>j"];
+           minimize = ["<Super>apostrophe"];
+           switch-to-workspace-1 = ["<Primary>1"]; # ctrl-1
+           switch-to-workspace-2 = ["<Primary>2"]; # ctrl-2
+           switch-to-workspace-3 = ["<Primary>3"]; # ctrl-3
+           switch-to-workspace-4 = ["<Primary>4"]; # ctrl-4
+     };
   };
 
   programs.gnome-terminal = {
