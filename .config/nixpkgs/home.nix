@@ -444,7 +444,7 @@ in
            (mkTuple ["xkb" "us"])
            (mkTuple ["xkb" "ru"])
          ]; 
-         xkb-options = "['terminate:ctrl_alt_bksp', 'lv3:ralt_switch', 'grp:shifts_toggle']";
+         xkb-options = ["terminate:ctrl_alt_bksp" "lv3:ralt_switch" "grp:shifts_toggle"];
      };
     "org/gnome/desktop/wm/preferences" = {
         action-middle-click-titlebar = "lower";
