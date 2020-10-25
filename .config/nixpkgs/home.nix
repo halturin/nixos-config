@@ -405,13 +405,13 @@ in
       # enable/disable synchronize input within a window
       bind a set-window-option synchronize-panes
       
-      setw -g window-style 'bg=#393939'
-      setw -g window-active-style "bg=#2d2d2d"
-      setw -g pane-border-style "bg=#393939"
+      setw -g window-style 'bg=#2d2d2d'
+      setw -g window-active-style "bg=#282828"
+      setw -g pane-border-style "bg=#2d2d2d"
 
       # workaround for Alacritty opacity issue
-      set -g window-style 'fg=colour250'
-      set -g window-active-style 'fg=colour255'
+      # set -g window-style 'fg=#EBDBB2'
+      # set -g window-active-style 'fg=#EBDBB2'
     '';
     plugins = with pkgs.tmuxPlugins; [
       gruvbox
