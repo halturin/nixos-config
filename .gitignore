@@ -1,1 +1,2 @@
 etc/nixos/hardware-configuration.nix
+private.luks
