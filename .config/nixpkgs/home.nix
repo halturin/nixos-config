@@ -23,17 +23,22 @@ in
   home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
   home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
 
+  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty/alacritty.yml; 
+
   xdg.enable = true;
 
   home.packages = with pkgs; [
     mc htop neofetch vifm-full
+
+    # some non-free software
     spotify
     discord
     slack
+    skype
 
     kubernetes minikube docker-machine-kvm2
 
-    tmux ctags cmake gnumake gcc git tig binutils xclip file killall
+    tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall
     dhex jq
 
     ffmpeg mpv wmctrl pavucontrol screenkey obs-studio
@@ -52,20 +57,21 @@ in
     vscode
 
     iosevka dejavu_fonts ttf_bitstream_vera
-    skype
 
-    gnome3.gnome-tweak-tool gnome3.gnome-boxes
-    transmission-gtk
-    rxvt-unicode
+    gnome3.gnome-tweak-tool gnome3.gnome-boxes gnome3.gnome-sound-recorder
+    transmission-gtk gimp inkscape
+    rxvt-unicode alacritty
     tdesktop
 
-    dumptorrent
+    dumptorrent # for vifm
 
     iotop powertop
 
     lm_sensors
 
     materia-theme
+
+    cryptsetup # for LUKS image
   ];
 
   programs.fzf.enable = true;
@@ -273,6 +279,7 @@ in
         nord-vim
         rust-vim
         vim-airline
+        vim-airline-themes
         nerdtree
         fzf-vim
         vim-fugitive
@@ -336,7 +343,7 @@ in
     baseIndex = 1;
     clock24 = true;
     keyMode = "vi";
-    shortcut = "a";
+    #shortcut = "a"; we cant use it due to vim' feature of inc/dec numbers via ctrl-a/ctrl-x
     terminal = "tmux-256color";
 
     extraConfig = ''
@@ -347,8 +354,8 @@ in
       set-option -g set-titles on
       set-option -g set-titles-string "#S / #W"
 
-      bind -n M-"'" split-window -v -c '#{pane_current_path}'
-      bind -n M-'"' split-window -h -c '#{pane_current_path}'
+      bind -n M-'"' split-window -v -c '#{pane_current_path}'
+      bind -n M-"'" split-window -h -c '#{pane_current_path}'
       unbind "%"
       unbind '"'
 
@@ -401,6 +408,10 @@ in
       setw -g window-style 'bg=#393939'
       setw -g window-active-style "bg=#2d2d2d"
       setw -g pane-border-style "bg=#393939"
+
+      # workaround for Alacritty opacity issue
+      set -g window-style 'fg=colour250'
+      set -g window-active-style 'fg=colour255'
     '';
     plugins = with pkgs.tmuxPlugins; [
       gruvbox

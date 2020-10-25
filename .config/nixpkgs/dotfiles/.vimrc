@@ -47,6 +47,10 @@ set background=dark
 
 let g:gruvbox_italic = 1
 colorscheme gruvbox
+
+" to make background invisible
+hi Normal ctermbg=NONE guibg=NONE
+
 " Airline powerline fonts fix
 let g:airline_powerline_fonts = 1
 " Airline theme
