@@ -20,6 +20,9 @@ nnoremap <silent> <leader>m :Marks<CR>
 nnoremap <silent> <C-p> :History<CR>
 nnoremap <silent> <C-h> :History:<CR>
 
+" search a word (under cursor) withing current directory
+nnoremap <silent> <leader>s :Rg <C-r>=expand('<cword>')<CR><CR>
+
 nnoremap <leader>f :NERDTreeToggle %<Enter>
 imap jj <Esc>
 
@@ -80,4 +83,6 @@ noremap p "*p
 vnoremap Y "+y
 noremap P "+p
 
+" set tab symbol visible
+set list
 
