@@ -62,7 +62,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
-     wget neovim home-manager firefox git 
+     wget neovim home-manager firefox git spice-gtk
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -87,6 +87,11 @@
 
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
+
+   services.printing = {
+        enable = true;
+        drivers = [ pkgs.hplip ];
+   };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -161,5 +166,8 @@
 
   # due to bug https://github.com/NixOS/nixpkgs/issues/32580 encountering on NVIDIA cards
   environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
+
+  security.polkit.enable = true;
+  security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice_gtk}/bin/spice-client-glib-usb-acl-helper";
 }
 

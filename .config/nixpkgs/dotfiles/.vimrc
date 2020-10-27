@@ -86,3 +86,6 @@ noremap P "+p
 " set tab symbol visible
 set list
 
+" set vertical cursor position highlighting
+set cursorcolumn
+
