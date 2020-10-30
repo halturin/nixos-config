@@ -23,18 +23,13 @@ in
   home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
   home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
 
-  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty/alacritty.yml; 
-
   xdg.enable = true;
 
   home.packages = with pkgs; [
     mc htop neofetch vifm-full
 
     # some non-free software
-    spotify
-    discord
-    slack
-    skype
+    spotify discord slack skype postman
 
     kubernetes minikube docker-machine-kvm2
 
@@ -52,7 +47,7 @@ in
     syncthing-gtk
     chromium
 
-    inetutils
+    inetutils 
 
     vscode
 
@@ -60,7 +55,7 @@ in
 
     gnome3.gnome-tweak-tool gnome3.gnome-boxes gnome3.gnome-sound-recorder
     transmission-gtk gimp inkscape
-    rxvt-unicode alacritty
+    rxvt-unicode
     tdesktop
 
     dumptorrent # for vifm
@@ -72,6 +67,7 @@ in
     materia-theme
 
     cryptsetup # for LUKS image
+    wally-cli # for my ergodox keyboard
   ];
 
   programs.fzf.enable = true;
