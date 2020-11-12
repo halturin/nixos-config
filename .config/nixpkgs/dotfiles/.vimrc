@@ -21,7 +21,9 @@ nnoremap <silent> <C-p> :History<CR>
 nnoremap <silent> <C-h> :History:<CR>
 
 " search a word (under cursor) withing current directory
-nnoremap <silent> <leader>s :Rg <C-r>=expand('<cword>')<CR><CR>
+nnoremap <silent> <leader>/ :Rg <C-r>=expand('<cword>')<CR><CR>
+" search selected text within current directory
+vnoremap // y:Rg <C-R>=escape(@",'/\')<CR><CR>
 
 nnoremap <leader>f :NERDTreeToggle %<Enter>
 imap jj <Esc>
@@ -37,7 +39,7 @@ set hidden
 set confirm
 
 set tabstop=4
-set expandtab
+set noexpandtab
 set shiftwidth=4
 set encoding=UTF-8
 

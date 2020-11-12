@@ -21,4 +21,6 @@
  screenweb = "mpv av://v4l2:/dev/video0 --profile=low-latency --untimed & sleep 1 && wmctrl -r \"video0\" -e 0,2000,1000,400,0 && wmctrl -r \"video0\" -b toggle,above && xprop -name 'video0 - mpv' -format _MOTIF_WM_HINTS 32i -set _MOTIF_WM_HINTS 2 && fg";
  screenkey = "screenkey -p fixed -g 50%x7%+25%-1% -f \"Iosevka\"";
 
+ vi = "nvim";
+ vim = "nvim";
 }

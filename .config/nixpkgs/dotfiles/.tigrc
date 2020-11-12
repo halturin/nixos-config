@@ -1,0 +1,26 @@
+# inspired by https://github.com/jonas/tig/blob/master/contrib/vim.tigrc
+
+bind generic 	g  none
+bind generic 	gg move-first-line
+bind main    	G move-last-line
+bind generic 	G move-last-line
+bind main 		<C-g> view-grep
+
+color cursor 			default color239
+#color status 			color208 default
+color title-focus 		default color237
+color title-blur  		default default
+color author 			color12 default
+color date 				color8 default 
+color main-tag 			color0 color11
+color main-local-tag 	color0 color12
+color main-remote 		color11 default bold
+color main-head 		color12 default bold
+color search-result 	color0 color15 
+
+set main-view-id-display = yes
+set line-graphics = utf-8
+set truncation-delimiter = utf-8
+set vertical-split = auto
+set tab-size = 4
+

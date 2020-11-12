@@ -61,9 +61,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-     wget neovim home-manager firefox git spice-gtk
-   ];
+  environment.systemPackages = with pkgs; [
+     wget home-manager firefox git spice-gtk
+  ];
+
+  environment.variables.EDITOR = "nvim";
+  programs.neovim.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -115,7 +118,7 @@
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
-  # Enable the KDE Desktop Environment.
+  # Enable the GNOME Desktop Environment.
    services.xserver.displayManager.gdm.enable = true;
    services.xserver.desktopManager.gnome3.enable = true;
 
@@ -147,17 +150,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (self: super: {
-    	neovim = super.neovim.override {
-    		viAlias = true;
-    		vimAlias = true;
-    	};
-    })
-  ];
-
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
+  
+
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
 

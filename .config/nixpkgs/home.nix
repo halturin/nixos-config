@@ -23,6 +23,8 @@ in
   home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
   home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
 
+  home.file.".tigrc".source = ./dotfiles/.tigrc;
+
   xdg.enable = true;
 
   home.packages = with pkgs; [
@@ -36,7 +38,7 @@ in
     tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall
     dhex jq
 
-    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio
+    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura
     
 
     go erlang python3 
@@ -45,7 +47,7 @@ in
     ripgrep
 
     syncthing-gtk
-    chromium
+    chromium vivaldi
 
     inetutils 
 
@@ -116,15 +118,14 @@ in
       ZSH_THEME = "minimal";
       KEY_TIMEOUT = 20;
 
-      EDITOR = "vim";
+      EDITOR = "nvim";
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
 
       NIX_PATH = "$HOME/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels";
 
       # Golang
-      GOPATH = "$HOME/devel/goenv";
-      GOROOT = "$HOME/devel/go";
+      GOPATH = "$HOME/devel/go";
 
       # Rust
       CARGOPATH = "$HOME/.cargo";
