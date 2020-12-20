@@ -97,14 +97,14 @@ endif
 
 " Set custom status line look
 
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+set statusline="%= %A %10u:%-7g %15E %20d %{&sort} "
 
 " ------------------------------------------------------------------------------
 
 " :mark mark /full/directory/path [filename]
 
 mark a ~/devel/erlang/arweave
-mark e ~/devel/goenv/src/github.com/halturin/ergo
+mark e ~/devel/go/src/github.com/halturin/ergo
 mark h ~/
 
 " ------------------------------------------------------------------------------
@@ -456,6 +456,8 @@ nnoremap ,C :!nvim --remote-tab-silent $MYVIFMRC &<cr>
 
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
+
+nnoremap ,s :sort<cr>
 
 " Example of standard two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>

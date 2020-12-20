@@ -24,6 +24,7 @@ in
   home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
 
   home.file.".tigrc".source = ./dotfiles/.tigrc;
+  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty/alacritty.yml;
 
   xdg.enable = true;
 
@@ -33,20 +34,25 @@ in
     # some non-free software
     spotify discord slack skype postman
 
+    cava cmus
+
     kubernetes minikube docker-machine-kvm2
 
     tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall
     dhex jq
 
-    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura
-    
+    libxfs
 
-    go erlang python3 
+    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura
+    alacritty
+    mdadm
+
+    go erlang python3 gdb
 
     exa
     ripgrep
 
-    syncthing-gtk
+    # syncthing-gtk
     chromium vivaldi
 
     inetutils 
@@ -56,6 +62,8 @@ in
     iosevka dejavu_fonts ttf_bitstream_vera
 
     gnome3.gnome-tweak-tool gnome3.gnome-boxes gnome3.gnome-sound-recorder
+    simple-scan #gnomeExtensions.paperwm
+
     transmission-gtk gimp inkscape
     rxvt-unicode
     tdesktop
@@ -70,6 +78,7 @@ in
 
     cryptsetup # for LUKS image
     wally-cli # for my ergodox keyboard
+
   ];
 
   programs.fzf.enable = true;
@@ -506,14 +515,17 @@ in
 
 
   xresources.extraConfig = ''
+    XTerm*faceSize: 9
+
     URxvt*scrollBar:        false
-    !URxvt*font:                xft:PragmataPro Mono Liga:style=regular:size=11
     URxvt*font:                 xft:Iosevka:size=10
     URxvt*iso14755:         false
     URxvt*iso14755_52:      false
 
     *.cursorColor: #de8043
     URxvt.cursorBlink: true
+
+    URxvt.internalBorder:  24
 
     !!! Gruvbox theme
     ! hard contrast: *background: #1d2021

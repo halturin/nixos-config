@@ -24,3 +24,5 @@ set truncation-delimiter = utf-8
 set vertical-split = auto
 set tab-size = 4
 
+set blob-view = line-number:yes,interval=1 text
+

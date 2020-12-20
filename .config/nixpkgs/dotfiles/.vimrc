@@ -91,3 +91,5 @@ set list
 " set vertical cursor position highlighting
 set cursorcolumn
 
+" remove trailing whitespace on writing
+autocmd BufWritePre * %s/\s\+$//e
