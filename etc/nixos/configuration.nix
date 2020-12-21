@@ -38,14 +38,6 @@
   #  ''
   #};
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = true;
-  networking.interfaces.enp71s0.useDHCP = true;
-  networking.interfaces.wlo2.useDHCP = true;
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -153,8 +145,6 @@
 
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
-  
-
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
 
