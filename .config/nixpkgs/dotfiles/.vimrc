@@ -33,6 +33,9 @@ nnoremap <leader>F :Files<Enter>
 " Print full path
 map <C-f> :echo expand("%:p")<cr>
 
+" Use Tab to swich the window
+map <Tab> <C-W>W
+
 set number relativenumber
 
 set hidden

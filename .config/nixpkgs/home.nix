@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   mkTuple = lib.hm.gvariant.mkTuple;
-in 
+in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -55,7 +55,7 @@ in
     # syncthing-gtk
     chromium vivaldi
 
-    inetutils 
+    inetutils v4l-utils
 
     vscode
 
@@ -106,7 +106,7 @@ in
       ls = "log -C --stat --decorate";
       lsd = "log --graph '--pretty=tformat:%Cblue%h%Creset %Cgreen%ar%Creset %Cblue%d%Creset %s' --all --simplify-by-decoration";
 
-      extraConfig = 
+      extraConfig =
         ''
 
         '';
@@ -140,7 +140,7 @@ in
       CARGOPATH = "$HOME/.cargo";
 
       PATH = "$GOROOT/bin:$GOPATH/bin:$CARGOPATH/bin:$PATH";
-      
+
     };
 
     initExtraBeforeCompInit = ''
@@ -208,7 +208,7 @@ in
           owner = "zimfw";
           repo = "git";
           rev = "91c4d36552dc16acea8bd5e1c91f7b9085ac03e1";
-          sha256 = "1qr2ya2n73c0mvnxr3mc9m4y7grq0izi97sy97hds8dvv855ya08"; 
+          sha256 = "1qr2ya2n73c0mvnxr3mc9m4y7grq0izi97sy97hds8dvv855ya08";
         };
       }
 
@@ -368,28 +368,28 @@ in
 
       bind s copy-mode
       bind P paste-buffer
-      
-      # Use v to trigger selection    
+
+      # Use v to trigger selection
       bind-key -T copy-mode-vi v send-keys -X begin-selection
-      
+
       # Use y to yank current selection
       bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-      
+
       bind -n M-h select-pane -L
       bind -n M-j select-pane -D
       bind -n M-k select-pane -U
       bind -n M-l select-pane -R
-      
+
       bind -n M-J resize-pane -D
       bind -n M-K resize-pane -U
       bind -n M-H resize-pane -L
       bind -n M-L resize-pane -R
       bind -n M-Z resize-pane -Z
-      
+
       bind -n M-q display-panes
-      
+
       bind -n M-w choose-tree -Zw
-      
+
       bind -n M-1 select-window -t :=1
       bind -n M-2 select-window -t :=2
       bind -n M-3 select-window -t :=3
@@ -399,7 +399,7 @@ in
       bind -n M-7 select-window -t :=7
       bind -n M-8 select-window -t :=8
       bind -n M-9 select-window -t :=9
-      
+
       # (prefix k) to kill window
       unbind &
       unbind C-k
@@ -407,10 +407,10 @@ in
       bind k confirm-before -p "Do you really want to kill #W? (y/n)"  kill-window
 
       set -g history-limit 10000
-      
+
       # enable/disable synchronize input within a window
       bind a set-window-option synchronize-panes
-      
+
       setw -g window-style 'bg=#2d2d2d'
       setw -g window-active-style "bg=#282828"
       setw -g pane-border-style "bg=#2d2d2d"
@@ -457,10 +457,10 @@ in
     };
     "org/gnome/desktop/input-sources" = {
          per-window = true;
-         sources = [ 
+         sources = [
            (mkTuple ["xkb" "us"])
            (mkTuple ["xkb" "ru"])
-         ]; 
+         ];
          xkb-options = ["terminate:ctrl_alt_bksp" "lv3:ralt_switch" "grp:shifts_toggle"];
      };
     "org/gnome/desktop/wm/preferences" = {
@@ -498,7 +498,7 @@ in
           };
 
           palette = [
-            "rgb(40,40,40)" "rgb(204,36,29)" 
+            "rgb(40,40,40)" "rgb(204,36,29)"
             "rgb(152,151,26)" "rgb(215,153,33)"
             "rgb(69,133,136)" "rgb(177,98,134)"
             "rgb(104,157,106)" "rgb(168,153,132)"

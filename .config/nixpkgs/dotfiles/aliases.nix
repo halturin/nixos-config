@@ -18,8 +18,8 @@
  vv = "vifm";
 
  screencast = "ffmpeg -f x11grab -s \"1920x1080\" -r \"60\" -i :1 -f alsa -ac 1 -i hw:2 -acodec libmp3lame -ab 128 -threads 8  ~/Videos/capture.mkv";
- screenweb = "mpv av://v4l2:/dev/video0 --profile=low-latency --untimed & sleep 1 && wmctrl -r \"video0\" -e 0,2000,1000,400,0 && wmctrl -r \"video0\" -b toggle,above && xprop -name 'video0 - mpv' -format _MOTIF_WM_HINTS 32i -set _MOTIF_WM_HINTS 2 && fg";
- screencam = "mpv av://v4l2:/dev/video2 --profile=low-latency --untimed --video-rotate=180 --video-zoom=0.33 & sleep 1 && wmctrl -r \"video2\" -b remove,maximized_vert,maximized_horz &&  wmctrl -r \"video2\" -e 0,0,2000,400,0 && wmctrl -r \"video2\" -b add,above && xprop -name 'video2 - mpv' -format _MOTIF_WM_HINTS 32i -set _MOTIF_WM_HINTS 2 && fg ";
+ screenweb = "mpv av://v4l2:/dev/v4l/by-path/pci-0000:47:00.3-usb-0:2.1:1.0-video-index0 --profile=low-latency --untimed & sleep 1 && wmctrl -r \"pci-0000:47:00.3-usb-0:2.1:1.0-video-index0\" -e 0,2000,1000,400,0 && wmctrl -r \"pci-0000:47:00.3-usb-0:2.1:1.0-video-index0\" -b toggle,above && xprop -name 'pci-0000:47:00.3-usb-0:2.1:1.0-video-index0 - mpv' -format _MOTIF_WM_HINTS 32i -set _MOTIF_WM_HINTS 2 && fg";
+ screencam = "v4l2-ctl -v width=1920,height=1080,pixelformat=YUYV -d /dev/v4l/by-path/pci-0000:47:00.1-usb-0:3.3:1.0-video-index0 && mpv av://v4l2:/dev/v4l/by-path/pci-0000:47:00.1-usb-0:3.3:1.0-video-index0 --profile=low-latency --untimed --video-rotate=180 --video-zoom=0.33 & sleep 1 && wmctrl -r \"pci-0000:47:00.1-usb-0:3.3:1.0-video-index0\" -b remove,maximized_vert,maximized_horz &&  wmctrl -r \"pci-0000:47:00.1-usb-0:3.3:1.0-video-index0\" -e 0,0,2000,400,0 && wmctrl -r \"pci-0000:47:00.1-usb-0:3.3:1.0-video-index0\" -b add,above && xprop -name 'pci-0000:47:00.1-usb-0:3.3:1.0-video-index0 - mpv' -format _MOTIF_WM_HINTS 32i -set _MOTIF_WM_HINTS 2 && fg ";
  screenkey = "screenkey -p fixed -g 50%x7%+25%-1% -f \"Iosevka\"";
 
  vi = "nvim";
