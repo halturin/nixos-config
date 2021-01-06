@@ -13,10 +13,11 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "xfs" ];
+  boot.supportedFilesystems = [ "xfs" "ntfs" ];
 
   boot.cleanTmpDir = true;
-  boot.kernelPackages = pkgs.linuxPackages_5_8;
+  # latest LTS
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking = {
     hostName = "sevelen"; # Define your hostname.

@@ -34,7 +34,10 @@ nnoremap <leader>F :Files<Enter>
 map <C-f> :echo expand("%:p")<cr>
 
 " Use Tab to swich the window
-map <Tab> <C-W>W
+" forward
+map <Tab> <C-w>w
+" backward (shift+tab)
+map <S-Tab> <C-w>W
 
 set number relativenumber
 

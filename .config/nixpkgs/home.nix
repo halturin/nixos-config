@@ -39,9 +39,9 @@ in
     kubernetes minikube docker-machine-kvm2
 
     tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall
-    dhex jq
+    dhex jq unzip
 
-    libxfs
+    libxfs ntfs3g
 
     ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura
     alacritty
