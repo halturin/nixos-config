@@ -24,6 +24,7 @@ in
   home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
 
   home.file.".tigrc".source = ./dotfiles/.tigrc;
+  home.file.".multitail.conf".source = ./dotfiles/.multitail.conf;
   xdg.configFile."alacritty/alacritty.yml".source = ./alacritty/alacritty.yml;
 
   xdg.enable = true;
@@ -32,18 +33,18 @@ in
     mc htop neofetch vifm-full
 
     # some non-free software
-    spotify discord slack skype postman
+    spotify discord slack skype postman zoom-us teams
 
     cava cmus
 
     kubernetes minikube docker-machine-kvm2
 
-    tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall
+    tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall multitail
     dhex jq unzip
 
     libxfs ntfs3g
 
-    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura
+    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura peek
     alacritty
     mdadm
 
@@ -51,6 +52,7 @@ in
 
     exa
     ripgrep
+    # poke - should be added near future. check later. http://www.jemarch.net/poke
 
     # syncthing-gtk
     chromium vivaldi
@@ -59,10 +61,10 @@ in
 
     vscode
 
-    iosevka dejavu_fonts ttf_bitstream_vera
+    iosevka dejavu_fonts ttf_bitstream_vera noto-fonts
 
     gnome3.gnome-tweak-tool gnome3.gnome-boxes gnome3.gnome-sound-recorder
-    simple-scan #gnomeExtensions.paperwm
+    #gnomeExtensions.paperwm
 
     transmission-gtk gimp inkscape
     rxvt-unicode
@@ -79,9 +81,12 @@ in
     cryptsetup # for LUKS image
     wally-cli # for my ergodox keyboard
 
+    shortwave # internet radio
+
   ];
 
   programs.fzf.enable = true;
+
 
   programs.git = {
     enable = true;
@@ -518,14 +523,14 @@ in
     XTerm*faceSize: 9
 
     URxvt*scrollBar:        false
-    URxvt*font:                 xft:Iosevka:size=10
+    URxvt*font:                 xft:Iosevka:size=4
     URxvt*iso14755:         false
     URxvt*iso14755_52:      false
 
     *.cursorColor: #de8043
     URxvt.cursorBlink: true
 
-    URxvt.internalBorder:  24
+    URxvt.internalBorder: 16
 
     !!! Gruvbox theme
     ! hard contrast: *background: #1d2021

@@ -163,7 +163,7 @@ filextype {*.pdf},<application/pdf> zathura %c %i &, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " JSON
-fileviewer {*.json},<application/json> cat %c | jq -C 
+fileviewer {*.json},<application/json> cat %c | jq -C
 
 " PostScript
 filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
@@ -220,8 +220,8 @@ filetype {*.html,*.htm},<text/html> links, lynx
 filetype {*.o},<application/x-object> nm %f | less
 
 " Man page
-filetype {*.[1-8]},<text/troff> man ./%c
-fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
+" filetype {*.[1-8]},<text/troff> man ./%c
+" fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
 " Images
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
@@ -414,7 +414,7 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
 " Open file in existing instance of gvim
-nnoremap o :!nvim --remote-tab-silent %f<cr>
+nnoremap o :!nvim %f<cr>
 " Open file in new instance of gvim
 nnoremap O :!nvim %f<cr>
 

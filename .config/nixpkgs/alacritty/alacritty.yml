@@ -33,8 +33,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 15
-    y: 15
+    x: 4
+    y: 4
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -48,7 +48,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: none
+  # decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -367,7 +367,7 @@ mouse:
     #
     # These are the modifiers that need to be held down for opening URLs when clicking
     # on them. The available modifiers are documented in the key binding section.
-    modifiers: control 
+    modifiers: control
 
 # Mouse bindings
 #
