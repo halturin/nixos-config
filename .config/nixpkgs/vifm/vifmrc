@@ -232,7 +232,8 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in shotwell}
         \ shotwell,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ identify %f
+		\ catimg -w $((%pw * 2)) -ct -r 2 %c
+        " \ identify %f
 
 " OpenRaster
 filextype *.ora

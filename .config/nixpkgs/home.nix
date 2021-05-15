@@ -35,7 +35,7 @@ in
     # some non-free software
     spotify discord slack skype postman zoom-us teams
 
-    cava cmus
+    cava cmus catimg
 
     kubernetes minikube docker-machine-kvm2
 
