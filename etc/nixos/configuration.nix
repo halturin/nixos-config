@@ -33,6 +33,10 @@
   security.rtkit.enable = true;
   
   services.pipewire = {
+  enable = true;
+  alsa.enable = true;
+  alsa.support32Bit = true;
+  pulse.enable = true;
   config.pipewire = {
     "context.properties" = {
       #"link.max-buffers" = 64;
@@ -157,7 +161,7 @@
 
   # Enable sound.
   # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   # Enable the X11 windowing system.
    services.xserver.enable = true;
@@ -170,7 +174,7 @@
 
   # Enable the GNOME Desktop Environment.
    services.xserver.displayManager.gdm.enable = true;
-   services.xserver.desktopManager.gnome3.enable = true;
+   services.xserver.desktopManager.gnome.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.taras = {
