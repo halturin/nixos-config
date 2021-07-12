@@ -40,7 +40,7 @@ in
     kubernetes minikube docker-machine-kvm2
 
     tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall multitail
-    dhex jq unzip
+    dhex jq unzip graphviz firejail
 
     libxfs ntfs3g
 
@@ -48,11 +48,11 @@ in
     alacritty
     mdadm
 
-    go erlang python3 gdb
+    go goimports gopls erlang python3 gdb
 
     exa
     ripgrep
-    # poke - should be added near future. check later. http://www.jemarch.net/poke
+    poke # editor for binary data http://www.jemarch.net/poke
 
     # syncthing-gtk
     chromium vivaldi
