@@ -99,3 +99,7 @@ set cursorcolumn
 
 " remove trailing whitespace on writing
 autocmd BufWritePre * %s/\s\+$//e
+
+" Startify opts
+nnoremap <leader>s :Startify<cr>
+

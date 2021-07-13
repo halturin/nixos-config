@@ -295,6 +295,7 @@ in
         fzf-vim
         vim-fugitive
         tagbar
+        vim-startify
 
         (pkgs.vimUtils.buildVimPlugin {
           pname = "vim-numbertoggle";
@@ -406,8 +407,8 @@ in
       bind -n M-9 select-window -t :=9
 
       # (prefix k) to kill window
-      unbind &
-      unbind C-k
+      # unbind &
+      # unbind C-k
       unbind k
       bind k confirm-before -p "Do you really want to kill #W? (y/n)"  kill-window
 
