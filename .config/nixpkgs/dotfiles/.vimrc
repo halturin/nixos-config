@@ -73,6 +73,7 @@ set mouse=a
 " vim-go settings
 nmap <C-g> :GoDecls<cr>
 imap <C-g> <esc>:<C-u>GoDecls<cr>
+let g:go_fmt_options = "-s"
 
 
 set backupdir=/tmp//

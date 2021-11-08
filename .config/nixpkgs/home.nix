@@ -21,19 +21,18 @@ in
   home.file.".config/vifm/colors".source = ./vifm/colors;
   home.file.".config/vifm/vifm.icons".source = ./vifm/vifm.icons;
   home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
-  home.file.".local/share/backgrounds/wp.jpg".source = ./wp.jpg;
+  home.file.".local/share/backgrounds/wp1.png".source = ./wp1.png;
 
   home.file.".tigrc".source = ./dotfiles/.tigrc;
   home.file.".multitail.conf".source = ./dotfiles/.multitail.conf;
-  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty/alacritty.yml;
 
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    mc htop neofetch vifm-full
+    mc htop neofetch vifm-full iftop nethogs
 
     # some non-free software
-    spotify discord slack skype postman zoom-us teams
+    spotify skype postman teams slack
 
     cava cmus catimg
 
@@ -44,22 +43,23 @@ in
 
     libxfs ntfs3g
 
+
     ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura peek
-    alacritty
     mdadm
 
-    go goimports gopls erlang python3 gdb
+    go goimports gopls golint erlang python3 gdb
 
     exa
     ripgrep
     poke # editor for binary data http://www.jemarch.net/poke
+    upx # upx --best --lzma ./binary
 
     # syncthing-gtk
     chromium vivaldi
 
-    inetutils v4l-utils
+    inetutils dig v4l-utils
 
-    vscode
+    vscode meld
 
     iosevka dejavu_fonts ttf_bitstream_vera noto-fonts
 
@@ -76,7 +76,7 @@ in
 
     lm_sensors
 
-    materia-theme
+    #materia-theme
 
     cryptsetup # for LUKS image
     wally-cli # for my ergodox keyboard
@@ -100,8 +100,7 @@ in
       b = "branch";
 
       ba = "branch -a -v -v";
-      bs = "!git-branch-status";
-      bsi = "!git-branch-status -i";
+      bd = "branch -D";
 
       ci = "commit";
       co = "checkout";
@@ -154,11 +153,11 @@ in
 
       autoload -Uz git-alias-lookup git-branch-current git-branch-delete-interactive git-dir git-ignore-add git-root git-stash-clear-interactive git-stash-recover git-submodule-move git-submodule-remove mkcd mkpw coalesce git-action git-info
 
-      ergo() { cd $GOPATH/src/github.com/halturin/ergo/$1 }
-      compctl -/ -W $GOPATH/src/github.com/halturin/ergo/ ergo
+      ergo() { cd $GOPATH/src/github.com/ergo-services/ergo/$1 }
+      compctl -/ -W $GOPATH/src/github.com/ergo-services/ergo/ ergo
 
-      arweave() { cd $HOME/devel/erlang/arweave/$1 }
-      compctl -/ -W $HOME/devel/erlang/arweave/ arweave
+      devel() { cd $HOME/devel/$1 }
+      compctl -/ -W $HOME/devel/ devel
 
     '';
 
@@ -170,6 +169,8 @@ in
       neofetch
 
       ulimit -n 500000
+
+      alias ...="cd -"
 
     '';
 
@@ -288,7 +289,6 @@ in
 		vim-go
 		gruvbox
         nord-vim
-        rust-vim
         vim-airline
         vim-airline-themes
         nerdtree
@@ -433,9 +433,9 @@ in
   };
 
   dconf.settings = {
-     "org/gnome/shell/extensions/user-theme" = {
-        name = "Materia-light-compact";
-     };
+     #"org/gnome/shell/extensions/user-theme" = {
+     #   name = "Materia-light-compact";
+     #};
      "org/gnome/mutter/keybindings" = {
          toggle-tiled-left = ["<Super>h"];
          toggle-tiled-right = ["<Super>l"];
@@ -448,7 +448,7 @@ in
          screensaver = ["<Super>Return"];
      };
      "org/gnome/desktop/background" = {
-         picture-uri = "file:///home/taras/.local/share/backgrounds/wp.jpg";
+         picture-uri = "file:///home/taras/.local/share/backgrounds/wp1.png";
     };
 
     "org/gnome/desktop/interface" = {
@@ -458,7 +458,7 @@ in
 
          document-font-name = "Iosevka 9";
          font-name = "Iosevka Term 10";
-         gtk-theme = "Materia-light-compact";
+         #gtk-theme = "Materia-light-compact";
          monospace-font-name = "Iosevka Term 10";
     };
     "org/gnome/desktop/input-sources" = {

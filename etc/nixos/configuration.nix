@@ -17,8 +17,8 @@
 
   boot.cleanTmpDir = true;
   # latest LTS
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_5_12;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_5_12;
 
 
   networking = {
@@ -32,7 +32,6 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
-  security.rtkit.enable = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -93,6 +92,11 @@
         drivers = [ pkgs.hplip ];
    };
 
+   services.gvfs.enable = true;
+
+   services.onedrive.enable = true;
+
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -102,13 +106,27 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  security.rtkit.enable = true;
   # Enable sound.
-  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    # media-session.enable = true;
+  };
+
 
   # Enable the X11 windowing system.
    services.xserver.enable = true;
    services.xserver.layout = "us";
-   services.xserver.videoDrivers = [ "nvidia" ];
+   services.xserver.videoDrivers = [ "amdgpu" ];
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable touchpad support.
@@ -118,10 +136,16 @@
    services.xserver.displayManager.gdm.enable = true;
    services.xserver.desktopManager.gnome.enable = true;
 
+   hardware.opengl.extraPackages = with pkgs; [
+     rocm-opencl-icd
+     rocm-opencl-runtime
+   ];
+   hardware.opengl.driSupport = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.taras = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "audio" "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
 
      shell = pkgs.zsh;
    };
@@ -148,8 +172,9 @@
 
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
-  boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" "kvm-intel" "amdgpu" ];
 
   hardware.cpu.amd.updateMicrocode = true;
   nix.gc.automatic = true;
@@ -158,6 +183,5 @@
   environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
 
   security.polkit.enable = true;
-  security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice_gtk}/bin/spice-client-glib-usb-acl-helper";
 }
 
