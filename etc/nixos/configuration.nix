@@ -29,6 +29,12 @@
       allowPing = true;
       allowedTCPPorts = [ 22 80 443 ];
     };
+    extraHosts = 
+    ''
+      140.238.213.252 devel-small-02
+      152.67.70.250 devel-small-01
+      140.238.218.77 devel
+    '';
   };
 
   security.sudo.wheelNeedsPassword = false;
