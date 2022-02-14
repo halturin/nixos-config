@@ -63,7 +63,7 @@ in
 
     iosevka dejavu_fonts ttf_bitstream_vera noto-fonts
 
-    gnome3.gnome-tweak-tool gnome3.gnome-boxes gnome3.gnome-sound-recorder
+    gnome.gnome-tweaks gnome.gnome-boxes gnome.gnome-sound-recorder
     #gnomeExtensions.paperwm
 
     transmission-gtk gimp inkscape
@@ -81,7 +81,7 @@ in
     cryptsetup # for LUKS image
     wally-cli # for my ergodox keyboard
 
-    shortwave # internet radio
+    #shortwave # internet radio
 
   ];
 
@@ -467,7 +467,7 @@ in
            (mkTuple ["xkb" "us"])
            (mkTuple ["xkb" "ru"])
          ];
-         xkb-options = ["terminate:ctrl_alt_bksp" "lv3:ralt_switch" "grp:shifts_toggle"];
+         xkb-options = ["grp:shifts_toggle"];
      };
     "org/gnome/desktop/wm/preferences" = {
         action-middle-click-titlebar = "lower";

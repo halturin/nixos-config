@@ -99,7 +99,6 @@
    };
 
    services.gvfs.enable = true;
-
    services.onedrive.enable = true;
 
 
