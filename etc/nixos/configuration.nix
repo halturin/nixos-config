@@ -97,6 +97,7 @@
         enable = true;
         drivers = [ pkgs.hplip ];
    };
+   programs.system-config-printer.enable = true;
 
    services.gvfs.enable = true;
    services.onedrive.enable = true;

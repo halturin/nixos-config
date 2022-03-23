@@ -29,10 +29,10 @@ in
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    mc htop neofetch vifm-full iftop nethogs
+    mc htop neofetch vifm-full iftop nethogs openssl
 
     # some non-free software
-    spotify skype postman teams slack
+    spotify skypeforlinux postman teams
 
     cava cmus catimg
 
@@ -47,7 +47,7 @@ in
     ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura peek
     mdadm
 
-    go goimports gopls golint erlang python3 gdb
+    go gotools gopls golint erlang python3 gdb
 
     exa
     ripgrep

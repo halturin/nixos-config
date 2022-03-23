@@ -27,7 +27,6 @@ vnoremap // y:Rg <C-R>=escape(@",'/\')<CR><CR>
 
 nnoremap <leader>f :NERDTreeToggle %<Enter>
 imap jj <Esc>
-nnoremap ;; :qa!<Enter>
 
 nnoremap <leader>F :Files<Enter>
 
