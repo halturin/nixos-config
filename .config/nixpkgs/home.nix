@@ -31,8 +31,18 @@ in
   home.packages = with pkgs; [
     mc htop neofetch vifm-full iftop nethogs openssl
 
+    # reader
+    foliate
+
     # some non-free software
     spotify skypeforlinux postman teams
+
+    # vpn
+    protonvpn-cli
+
+    vmware-workstation
+
+    davinci-resolve
 
     cava cmus catimg
 
@@ -44,7 +54,8 @@ in
     libxfs ntfs3g
 
 
-    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio zathura peek
+    ffmpeg mpv wmctrl pavucontrol screenkey obs-studio peek
+    zathura
     mdadm
 
     go gotools gopls golint erlang python3 gdb
@@ -54,17 +65,16 @@ in
     poke # editor for binary data http://www.jemarch.net/poke
     upx # upx --best --lzma ./binary
 
-    # syncthing-gtk
     chromium vivaldi
 
     inetutils dig v4l-utils
 
-    vscode meld
+    # vscode
+    meld
 
     iosevka dejavu_fonts ttf_bitstream_vera noto-fonts
 
     gnome.gnome-tweaks gnome.gnome-boxes gnome.gnome-sound-recorder
-    #gnomeExtensions.paperwm
 
     transmission-gtk gimp inkscape
     rxvt-unicode
@@ -75,8 +85,6 @@ in
     iotop powertop
 
     lm_sensors
-
-    #materia-theme
 
     cryptsetup # for LUKS image
     wally-cli # for my ergodox keyboard

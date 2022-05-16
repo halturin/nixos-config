@@ -31,9 +31,9 @@
     };
     extraHosts = 
     ''
-      140.238.213.252 devel-small-02
-      152.67.70.250 devel-small-01
-      140.238.218.77 devel
+      140.238.210.133 devel-small-02
+      152.67.70.58 devel-small-01
+      152.67.92.84 devel
     '';
   };
 
@@ -93,11 +93,11 @@
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
 
-   services.printing = {
-        enable = true;
-        drivers = [ pkgs.hplip ];
-   };
-   programs.system-config-printer.enable = true;
+   # services.printing = {
+   #      enable = true;
+   #      drivers = [ pkgs.hplip ];
+   # };
+   # programs.system-config-printer.enable = true;
 
    services.gvfs.enable = true;
    services.onedrive.enable = true;
