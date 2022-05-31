@@ -179,6 +179,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.vmware.host.enable = true;
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" "amdgpu" ];
 

@@ -23,6 +23,7 @@ in
   home.file.".config/vifm/vifmrc".source = ./vifm/vifmrc;
   home.file.".local/share/backgrounds/wp1.png".source = ./wp1.png;
 
+  home.file.".config/htop/htoprc".source = ./dotfiles/htoprc;
   home.file.".tigrc".source = ./dotfiles/.tigrc;
   home.file.".multitail.conf".source = ./dotfiles/.multitail.conf;
 
@@ -65,7 +66,7 @@ in
     poke # editor for binary data http://www.jemarch.net/poke
     upx # upx --best --lzma ./binary
 
-    chromium vivaldi
+    ungoogled-chromium vivaldi
 
     inetutils dig v4l-utils
 
