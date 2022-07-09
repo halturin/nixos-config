@@ -50,7 +50,7 @@ in
     kubernetes minikube docker-machine-kvm2
 
     tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall multitail
-    dhex jq unzip graphviz firejail
+    dhex jq unzip graphviz firejail duf
 
     libxfs ntfs3g
 
@@ -60,6 +60,7 @@ in
     mdadm
 
     go gotools gopls golint erlang python3 gdb
+    wrk # benchmark tool
 
     exa
     ripgrep

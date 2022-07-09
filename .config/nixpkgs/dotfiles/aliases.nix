@@ -11,7 +11,8 @@
  dark = "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT \"dark\"";
  hide = "xprop -f  _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS '0x2, 0x0, 0x0, 0x0, 0x0'";
 
- cat = "bat";
+ cat = "bat --theme=gruvbox-dark";
+ duf = "duf -theme ansi";
 
  jq = "jq -C";
 

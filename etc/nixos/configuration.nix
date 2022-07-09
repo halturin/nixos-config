@@ -64,11 +64,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     wget home-manager firefox git spice-gtk
+     wget home-manager firefox git spice-gtk virt-manager
   ];
 
   environment.variables.EDITOR = "nvim";
   programs.neovim.enable = true;
+
+  programs.steam.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -179,7 +181,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.vmware.host.enable = true;
+  #virtualisation.vmware.host.enable = true;
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" "amdgpu" ];
 
