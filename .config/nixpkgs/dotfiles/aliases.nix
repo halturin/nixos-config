@@ -28,6 +28,7 @@
 
  vi = "nvim";
  vim = "nvim";
+ urxvt = "urxvt -fn \"xft:Iosevka:size=12\"";
 
  contribution = "git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr";
  multitail = "multitail -F ~/.multitail.conf";

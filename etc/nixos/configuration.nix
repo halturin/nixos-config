@@ -102,7 +102,7 @@
    # programs.system-config-printer.enable = true;
 
    services.gvfs.enable = true;
-   services.onedrive.enable = true;
+   # services.onedrive.enable = true;
 
 
   # Open ports in the firewall.
@@ -181,7 +181,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  #virtualisation.vmware.host.enable = true;
+  # virtualisation.vmware.host.enable = true;
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" "amdgpu" ];
 
