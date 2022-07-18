@@ -351,6 +351,9 @@ filextype */
 
 " Syntax highlighting in preview
 "
+
+fileviewer Makefile,Makefile.*,*.c,*.h,*.py,*.js,*.php,*.erl,*.hrl,*.md,*.go highlight -O xterm256 -s dante %c
+
 " Explicitly set highlight type for some extensions
 "
 " 256-color terminal
@@ -447,7 +450,7 @@ nnoremap cc cw<c-u>
 nnoremap A cw
 
 " Open console in current directory
-nnoremap ,t :!urxvt &<cr>
+nnoremap ,t :!urxvt -fn "xft:Iosevka:size=12" &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>

@@ -50,7 +50,9 @@ in
     kubernetes minikube docker-machine-kvm2
 
     tmux ctags cmake gnumake gcc git tig gitg binutils xclip file killall multitail
-    dhex jq unzip graphviz firejail duf
+    dhex jq unzip graphviz firejail duf ipinfo
+
+    highlight # for highlighing files preview in vifm
 
     libxfs ntfs3g
 
