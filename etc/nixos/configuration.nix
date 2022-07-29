@@ -34,6 +34,7 @@
       140.238.210.133 devel-small-02
       152.67.70.58 devel-small-01
       152.67.92.84 devel
+      192.168.88.226 tinker
     '';
   };
 
@@ -69,6 +70,8 @@
 
   environment.variables.EDITOR = "nvim";
   programs.neovim.enable = true;
+
+  programs.adb.enable = true;
 
   programs.steam.enable = true;
 
@@ -153,7 +156,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.taras = {
      isNormalUser = true;
-     extraGroups = [ "audio" "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "audio" "wheel" "docker" "libvirtd" "adbusers"]; # Enable ‘sudo’ for the user.
 
      shell = pkgs.zsh;
    };

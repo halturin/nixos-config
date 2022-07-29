@@ -30,7 +30,9 @@ in
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    mc htop neofetch vifm-full iftop nethogs openssl
+    mc htop neofetch vifm-full iftop nethogs openssl asciinema
+
+    libcamera
 
     # reader
     foliate
@@ -53,6 +55,7 @@ in
     dhex jq unzip graphviz firejail duf ipinfo
 
     highlight # for highlighing files preview in vifm
+    imgcat # to show an image within a vifm preview window. looks like a crap but at least can be showed :)
 
     libxfs ntfs3g
 
@@ -536,7 +539,7 @@ in
     XTerm*faceSize: 9
 
     URxvt*scrollBar:        false
-    URxvt*font:                 xft:Iosevka:size=4
+    URxvt*font:                 xft:Iosevka Nerd Font Mono:size=4
     URxvt*iso14755:         false
     URxvt*iso14755_52:      false
 
