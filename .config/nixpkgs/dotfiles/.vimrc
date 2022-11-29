@@ -72,8 +72,11 @@ set mouse=a
 
 " vim-go settings
 nmap <C-g> :GoDecls<cr>
+nmap <C-]> :GoDef<cr>
 imap <C-g> <esc>:<C-u>GoDecls<cr>
 let g:go_fmt_options = "-s"
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 
 set backupdir=/tmp//
@@ -103,4 +106,5 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Startify opts
 nnoremap <leader>s :Startify<cr>
+
 

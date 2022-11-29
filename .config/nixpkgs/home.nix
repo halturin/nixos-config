@@ -30,15 +30,18 @@ in
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    mc htop neofetch vifm-full iftop nethogs openssl asciinema
+    mc htop neofetch vifm-full iftop nethogs openssl asciinema vscode
+    gotools
 
-    libcamera
+    libcamera calls
+
+    discord
 
     # reader
     foliate
 
     # some non-free software
-    spotify skypeforlinux postman teams
+    spotify skypeforlinux postman teams zoom-us
 
     # vpn
     protonvpn-cli
@@ -61,7 +64,7 @@ in
 
 
     ffmpeg mpv wmctrl pavucontrol screenkey obs-studio peek
-    zathura
+    # zathura
     mdadm
 
     go gotools gopls golint erlang python3 gdb
@@ -154,11 +157,12 @@ in
 
       # Golang
       GOPATH = "$HOME/devel/go";
+      GOBIN="$GOPATH/bin";
 
       # Rust
       CARGOPATH = "$HOME/.cargo";
 
-      PATH = "$GOROOT/bin:$GOPATH/bin:$CARGOPATH/bin:$PATH";
+      # join them together
 
     };
 
@@ -179,6 +183,8 @@ in
     # limits can be defined via security.pam.loginLimits in the system configuration
     # details are here https://search.nixos.org/options?channel=unstable&query=security.pam.
     initExtra = ''
+      export PATH="$GOPATH/bin:$CARGOPATH/bin:$PATH"
+
       bindkey 'jj' vi-cmd-mode
 
       neofetch
@@ -294,16 +300,13 @@ in
 
   };
 
-
   programs.neovim = {
 	enable = true;
     vimAlias = true;
     extraConfig = builtins.readFile ./dotfiles/.vimrc;
 	plugins = with pkgs.vimPlugins; [
 		vim-nix
-		vim-go
 		gruvbox
-        nord-vim
         vim-airline
         vim-airline-themes
         nerdtree
@@ -311,6 +314,7 @@ in
         vim-fugitive
         tagbar
         vim-startify
+        vim-go
 
         (pkgs.vimUtils.buildVimPlugin {
           pname = "vim-numbertoggle";
@@ -406,6 +410,11 @@ in
       bind -n M-H resize-pane -L
       bind -n M-L resize-pane -R
       bind -n M-Z resize-pane -Z
+
+      bind -n M-Y swap-window -t -1\; select-window -t -1
+      bind -n M-O swap-window -t +1\; select-window -t +1
+      bind -n m-y select-window -t -1
+      bind -n m-o select-window -t +1
 
       bind -n M-q display-panes
 

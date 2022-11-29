@@ -18,7 +18,7 @@
   boot.cleanTmpDir = true;
   # latest LTS
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_5_12;
+  # boot.kernelPackages = pkgs.linuxPackages_5_18;
 
 
   networking = {
@@ -27,13 +27,16 @@
     firewall = {
       enable = true;
       allowPing = true;
-      allowedTCPPorts = [ 22 80 443 ];
+      allowedTCPPorts = [ 22 80 443 111  2049 4000 4001 4002 20048 ];
+      allowedUDPPorts = [ 111 2049 4000 4001  4002 20048 ];
     };
-    extraHosts = 
+    extraHosts =
     ''
-      140.238.210.133 devel-small-02
-      152.67.70.58 devel-small-01
-      152.67.92.84 devel
+      140.238.210.133 devel-small-02 # oracle cloud zurich
+      152.67.70.58 devel-small-01    # oracle cloud zurich
+      152.67.92.84 devel             # oracle cloud zurich
+      192.9.156.95 devel-diego       # oracle cloud san diego
+      51.120.8.177 cloud01           # azure cloud norway
       192.168.88.226 tinker
     '';
   };
@@ -65,7 +68,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     wget home-manager firefox git spice-gtk virt-manager
+    wget home-manager firefox git spice-gtk virt-manager
   ];
 
   environment.variables.EDITOR = "nvim";
@@ -97,6 +100,17 @@
 
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
+
+   services.nfs.server = {
+     enable = true;
+     lockdPort = 4001;
+     mountdPort = 4002;
+     statdPort = 4000;
+     extraNfsdConfig = '''';
+   };
+  services.nfs.server.exports = ''
+    /archive/Movies 192.168.88.0/24(ro,nohide,insecure,no_subtree_check)
+  '';
 
    # services.printing = {
    #      enable = true;
@@ -195,5 +209,6 @@
   environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
 
   security.polkit.enable = true;
+
 }
 
