@@ -35,22 +35,29 @@ in
 
     libcamera calls
 
-    discord
+    jetbrains.datagrip
+
+    discord vlc
+
+    # mkv meta data editor
+    mkvtoolnix
 
     # reader
     foliate
 
     # some non-free software
-    spotify skypeforlinux postman teams zoom-us
+    cider spotify skypeforlinux #postman teams zoom-us
 
     # vpn
     protonvpn-cli
 
     vmware-workstation
 
-    davinci-resolve
+    # davinci-resolve
 
     cava cmus catimg
+
+    nodejs
 
     kubernetes minikube docker-machine-kvm2
 
@@ -82,7 +89,7 @@ in
     # vscode
     meld
 
-    iosevka dejavu_fonts ttf_bitstream_vera noto-fonts
+    iosevka dejavu_fonts ttf_bitstream_vera noto-fonts cascadia-code
 
     gnome.gnome-tweaks gnome.gnome-boxes gnome.gnome-sound-recorder
 
@@ -157,7 +164,10 @@ in
 
       # Golang
       GOPATH = "$HOME/devel/go";
-      GOBIN="$GOPATH/bin";
+      GOBIN="$HOME/devel/go/bin";
+
+      # npm
+      NPMPATH = "$HOME/.npm.global";
 
       # Rust
       CARGOPATH = "$HOME/.cargo";
@@ -172,9 +182,6 @@ in
 
       autoload -Uz git-alias-lookup git-branch-current git-branch-delete-interactive git-dir git-ignore-add git-root git-stash-clear-interactive git-stash-recover git-submodule-move git-submodule-remove mkcd mkpw coalesce git-action git-info
 
-      ergo() { cd $GOPATH/src/github.com/ergo-services/ergo/$1 }
-      compctl -/ -W $GOPATH/src/github.com/ergo-services/ergo/ ergo
-
       devel() { cd $HOME/devel/$1 }
       compctl -/ -W $HOME/devel/ devel
 
@@ -183,7 +190,7 @@ in
     # limits can be defined via security.pam.loginLimits in the system configuration
     # details are here https://search.nixos.org/options?channel=unstable&query=security.pam.
     initExtra = ''
-      export PATH="$GOPATH/bin:$CARGOPATH/bin:$PATH"
+      export PATH="$GOBIN:$CARGOPATH/bin:$NPMPATH/bin:$PATH"
 
       bindkey 'jj' vi-cmd-mode
 
@@ -192,6 +199,8 @@ in
       ulimit -n 500000
 
       alias ...="cd -"
+
+      npm set prefix=$NPMPATH
 
     '';
 
@@ -481,9 +490,9 @@ in
          cursor-size = 32;
 
          document-font-name = "Iosevka 9";
-         font-name = "Iosevka Term 10";
+         font-name = "Iosevka 10";
          #gtk-theme = "Materia-light-compact";
-         monospace-font-name = "Iosevka Term 10";
+         monospace-font-name = "Iosevka 10";
     };
     "org/gnome/desktop/input-sources" = {
          per-window = true;

@@ -78,6 +78,8 @@
 
   programs.steam.enable = true;
 
+  programs.zsh.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -109,7 +111,8 @@
      extraNfsdConfig = '''';
    };
   services.nfs.server.exports = ''
-    /archive/Movies 192.168.88.0/24(ro,nohide,insecure,no_subtree_check)
+    /archive/movies.current 192.168.88.0/24(ro,nohide,insecure,no_subtree_check)
+    /movies 192.168.88.0/24(ro,nohide,insecure,no_subtree_check)
   '';
 
    # services.printing = {
@@ -198,7 +201,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  # virtualisation.vmware.host.enable = true;
+  virtualisation.vmware.host.enable = true;
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" "amdgpu" ];
 
